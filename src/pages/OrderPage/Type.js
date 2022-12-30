@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Products from "./Products";
 import axios from "axios";
+import ErrorBanner from "../../components/ErrorBanner";
 
 const Type = ({ orderType }) => {
   const [items, setItems] = useState([]);
+  const [error, setError] = useState(false);
   useEffect(() => {
     loadItems(orderType);
   }, [orderType]);
@@ -12,9 +14,12 @@ const Type = ({ orderType }) => {
       let response = await axios.get(`http://localhost:5000/${orderType}`);
       setItems(response.data);
     } catch (error) {
-      console.log(error);
+      setError(true);
     }
   };
+  if (error) {
+    return <ErrorBanner message="에러가 발생했습니다" />;
+  }
   const ItemComonents = orderType === "products" ? Products : null;
   const optionItems = items.map((item) => (
     <ItemComonents

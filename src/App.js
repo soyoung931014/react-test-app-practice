@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Type from "./pages/OrderPage/Type";
 import SummaryPage from "./pages/SummaryPage/SummaryPage";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
   return (
     <div className="App">
       <SummaryPage />
+      <Type />
       <header className="App-header">
         <h3 data-testid="counter">{count}</h3>
         <div>
