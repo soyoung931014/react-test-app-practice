@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const SummaryPage = () => {
   const [checked, setChecked] = useState(false);
-  console.log(checked);
   return (
     <div>
       <form>
