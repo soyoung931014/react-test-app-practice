@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SummaryPage from "./pages/SummaryPage/SummaryPage";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -6,6 +7,7 @@ function App() {
 
   return (
     <div className="App">
+      <SummaryPage />
       <header className="App-header">
         <h3 data-testid="counter">{count}</h3>
         <div>
