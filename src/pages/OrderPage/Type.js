@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Products from "./Products";
 import axios from "axios";
 import ErrorBanner from "../../components/ErrorBanner";
+import Options from "./Options";
 
 const Type = ({ orderType }) => {
   const [items, setItems] = useState([]);
@@ -20,7 +21,7 @@ const Type = ({ orderType }) => {
   if (error) {
     return <ErrorBanner message="에러가 발생했습니다" />;
   }
-  const ItemComonents = orderType === "products" ? Products : null;
+  const ItemComonents = orderType === "products" ? Products : Options;
   const optionItems = items.map((item) => (
     <ItemComonents
       key={item.name}
