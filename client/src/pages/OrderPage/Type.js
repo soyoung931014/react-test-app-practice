@@ -24,11 +24,13 @@ const Type = ({ orderType }) => {
   const ItemComonents = orderType === "products" ? Products : Options;
   const optionItems = items.map((item) => (
     <ItemComonents
+      style={{ border: "2px solid red" }}
       key={item.name}
       name={item.name}
       imagePath={item.imagePath}
     />
   ));
+  console.log(optionItems, "optionItems");
   return (
     <div>
       <h2>주문종류</h2>
@@ -37,7 +39,7 @@ const Type = ({ orderType }) => {
       <div
         style={{
           display: "flex",
-          flexDirection: orderType === "options" && "column",
+          flexDirection: orderType === "options" && "column", //
         }}
       >
         {optionItems}

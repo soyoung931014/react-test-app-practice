@@ -9,6 +9,7 @@ test("display produce images from server", async () => {
   const productImages = await screen.findAllByRole("img", {
     name: /product$/i, // ㄷ...product로 끝난다 할때 $
   });
+  // findAllByRole사용한 이유: 2개 이상이니까 All,
   expect(productImages).toHaveLength(2); // 현재 핸들러 데이터 2임
 
   const altText = productImages.map((el) => el.alt);
