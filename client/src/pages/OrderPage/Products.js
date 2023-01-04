@@ -1,6 +1,10 @@
 import React from "react";
 
-const Products = ({ name, imagePath }) => {
+const Products = ({ name, imagePath, updateItemCount }) => {
+  const handleChange = (e) => {
+    const currentValue = e.target.value;
+    updateItemCount(name, currentValue);
+  };
   return (
     <div style={{ textAlign: "center" }}>
       <img
@@ -16,6 +20,7 @@ const Products = ({ name, imagePath }) => {
           name="quantity"
           min="0" // 최솟값을 0으로 두자.
           defaultValue={0}
+          onChange={handleChange}
         />
       </form>
     </div>
