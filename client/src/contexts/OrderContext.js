@@ -26,6 +26,7 @@ export function OrderContextProvider(props) {
     options: 0,
     total: 0,
   });
+
   useEffect(() => {
     const productsTotal = calculateSubtotal("products", orderCounts);
     const optionsTotal = calculateSubtotal("options", orderCounts);
@@ -33,14 +34,14 @@ export function OrderContextProvider(props) {
     setTotals({
       products: productsTotal,
       options: optionsTotal,
-      total,
+      total: total,
     });
   }, [orderCounts]);
 
   const value = useMemo(() => {
     function updateItemCount(itemName, newItemCount, orderType) {
-      const newOrderCounts = { ...orderCounts };
-      const orderCountsMap = orderCounts[orderType];
+      const newOrderCounts = { ...orderCounts }; // state를 바로 넣어주면 안되므로
+      const orderCountsMap = newOrderCounts[orderType];
       orderCountsMap.set(itemName, parseInt(newItemCount));
       setOrderCounts(newOrderCounts);
     }
