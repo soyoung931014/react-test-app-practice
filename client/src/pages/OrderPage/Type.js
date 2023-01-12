@@ -13,6 +13,7 @@ const Type = ({ orderType }) => {
   useEffect(() => {
     loadItems(orderType);
   }, [orderType]);
+
   const loadItems = async (orderType) => {
     try {
       let response = await axios.get(`http://localhost:5000/${orderType}`);
