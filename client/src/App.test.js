@@ -58,4 +58,23 @@ test("From order to order completion", async () => {
   });
 
   userEvent.click(confirmOrderButton);
+
+  ////////////        주문 완료 페이지 ////////////////
+  const loading = screen.getByText(/loading/i);
+  expect(loading).toBeInTheDocument();
+
+  // 바로위의 테스트가 성공하면(loading) 주문이 성공했습니다라는 화면이 나올것이다.
+  const completeHeader = await screen.findByRole("heading", {
+    name: "주문이 성공했습니다. ",
+  });
+  expect(completeHeader).toBeInTheDocument();
+  // 주문이 성공했습니다가 나오면 위의 로딩이 없어져야겠지???  //not.toBeInTheDocument()
+  const loadingDisppeared = screen.queryByText("loading");
+  expect(loadingDisppeared).not.toBeInTheDocument();
+
+  //이제 돌아가는 버튼을 클릭하는것을 테스트해주겠다.
+  const firstPageButton = screen.getByRole("button", {
+    name: "첫 페이지로",
+  });
+  userEvent.click(firstPageButton);
 });
