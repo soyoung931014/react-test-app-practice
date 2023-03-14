@@ -24,7 +24,7 @@ export function OrderContextProvider(props) {
   const [totals, setTotals] = useState({
     products: 0,
     options: 0,
-    total: 0,
+    totals: 0,
   });
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export function OrderContextProvider(props) {
     setTotals({
       products: productsTotal,
       options: optionsTotal,
-      total: total,
+      totals: total,
     });
   }, [orderCounts]);
 

@@ -60,6 +60,8 @@ test("From order to order completion", async () => {
   userEvent.click(confirmOrderButton);
 
   ////////////        주문 완료 페이지 ////////////////
+
+  // 백엔드에서 데이터를 가져오는 동안 loading을 띄운다.
   const loading = screen.getByText(/loading/i);
   expect(loading).toBeInTheDocument();
 
